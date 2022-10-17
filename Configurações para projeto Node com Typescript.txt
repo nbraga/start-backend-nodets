@@ -1,0 +1,24 @@
+1 - Instalar
+yarn init -y
+
+2 - Criar o .gitignore
+node_modules
+
+3 - Criar as configurações do editor config
+Botão direito e generate editor config
+
+4 - Pacotes para instalar
+yarn add express cors dotenv
+
+yarn add -D typescript ts-node-dev
+
+yarn add -D @types/cors @types/express
+
+5 - Configurar o Eslint
+yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier babel-eslint
+yarn eslint --init
+
+6 - Configurar o Typescript
+yarn tsc --init
+
+https://www.youtube.com/watch?v=r2yzlFz7Ua4
