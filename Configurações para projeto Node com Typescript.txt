@@ -8,7 +8,7 @@ node_modules
 Botão direito e generate editor config
 
 4 - Pacotes para instalar
-yarn add express cors dotenv
+yarn add express cors dotenv sequelize mysql2
 
 yarn add -D typescript ts-node-dev
 
