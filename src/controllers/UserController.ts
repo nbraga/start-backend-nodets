@@ -1,5 +1,6 @@
 import { UserModel } from "./../models/UserModel";
 import { Request, Response } from "express";
+import bcrypt from "bcrypt";
 
 class UserController {
   async findAll(req: Request, res: Response) {
@@ -21,10 +22,12 @@ class UserController {
   }
 
   async create(req: Request, res: Response) {
-    const { email, nome, idade } = req.body;
+    const { email, senha, nome, idade } = req.body;
+    const hashedPassword = await bcrypt.hash(senha, 10);
 
     const user = await UserModel.create({
       email,
+      senha: hashedPassword,
       nome,
       idade,
     });
