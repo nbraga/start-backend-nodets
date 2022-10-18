@@ -1,9 +1,10 @@
 import express, { json } from "express";
 import { router } from "./routes";
-import cors from "cors";
 import { db } from "./database/db";
+import cors from "cors";
 
 const app = express();
+app.use("/files", express.static("uploads"));
 app.use(json());
 app.use(cors());
 app.use(router);
