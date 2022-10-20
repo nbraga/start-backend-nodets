@@ -1,12 +1,33 @@
-import { DataTypes } from "sequelize";
+import {
+  CreationOptional,
+  DataTypes,
+  InferAttributes,
+  InferCreationAttributes,
+  Model,
+} from "sequelize";
 import { db } from "../database/db";
 
-export const UserModel = db.define("user", {
+interface UserModel
+  extends Model<
+    InferAttributes<UserModel>,
+    InferCreationAttributes<UserModel>
+  > {
+  id: CreationOptional<number>;
+  email: string;
+  senha: string;
+  nome: string;
+  idade: number;
+}
+
+export const UserModel = db.define<UserModel>("users", {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
-    allowNull: false,
     primaryKey: true,
+  },
+  nome: {
+    type: new DataTypes.STRING(128),
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
@@ -15,10 +36,6 @@ export const UserModel = db.define("user", {
   senha: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: true,
   },
   idade: {
     type: DataTypes.INTEGER,

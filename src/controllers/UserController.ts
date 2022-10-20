@@ -23,7 +23,9 @@ class UserController {
 
   async create(req: Request, res: Response) {
     const { email, senha, nome, idade } = req.body;
-    const hashedPassword = await bcrypt.hash(senha, 10);
+
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(senha, salt);
 
     const user = await UserModel.create({
       email,
