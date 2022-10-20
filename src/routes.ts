@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import UserController from "./controllers/UserController";
 import UploadController from "./controllers/UploadController";
+import LoginController from "./controllers/LoginController";
 
 import { storage } from "./config/multerConfig";
 import multer from "multer";
@@ -30,5 +31,8 @@ router.delete("/users/:userId", UserController.destroy);
 
 //UPLOAD
 router.post("/upload", uploadMulter.single("file"), UploadController.upload);
+
+//LOGIN
+router.post("/login", LoginController.login);
 
 export { router };
